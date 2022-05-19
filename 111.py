@@ -55,13 +55,13 @@ third_stdev2=mean+stdev*3
 
 
 
-fig.add_trace(go.Scatter(x=[first_stdev1,first_stdev1],y=[0,0.45],mode="lines",name='First standard deviation start'))
-fig.add_trace(go.Scatter(x=[first_stdev2,first_stdev2],y=[0,0.45],mode='lines',name="First standard deviation end"))
-fig.add_trace(go.Scatter(x=[second_stdev1,second_stdev1],y=[0,0.45],mode="lines",name='Second standard deviation start'))
-fig.add_trace(go.Scatter(x=[second_stdev2,second_stdev2],y=[0,0.45],mode='lines',name="Second standard deviation end"))
-fig.add_trace(go.Scatter(x=[third_stdev1,third_stdev1],y=[0,0.45],mode="lines",name='Third standard deviation start'))
-fig.add_trace(go.Scatter(x=[third_stdev2,third_stdev2],y=[0,0.45],mode='lines',name="Third standard deviation end"))
-fig.add_trace(go.Scatter(x=[new_sample_mean,new_sample_mean],y=[0,0.45],mode='lines',name='New mean'))
+fig.add_trace(go.Scatter(x=[first_stdev1,first_stdev1],y=[0,1.2],mode="lines",name='First standard deviation start'))
+fig.add_trace(go.Scatter(x=[first_stdev2,first_stdev2],y=[0,1.2],mode='lines',name="First standard deviation end"))
+fig.add_trace(go.Scatter(x=[second_stdev1,second_stdev1],y=[0,1.2],mode="lines",name='Second standard deviation start'))
+fig.add_trace(go.Scatter(x=[second_stdev2,second_stdev2],y=[0,1.2],mode='lines',name="Second standard deviation end"))
+fig.add_trace(go.Scatter(x=[third_stdev1,third_stdev1],y=[0,1.2],mode="lines",name='Third standard deviation start'))
+fig.add_trace(go.Scatter(x=[third_stdev2,third_stdev2],y=[0,1.2],mode='lines',name="Third standard deviation end"))
+fig.add_trace(go.Scatter(x=[new_sample_mean,new_sample_mean],y=[0,1.2],mode='lines',name='New mean'))
 
 
 fig.show()
