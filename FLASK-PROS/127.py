@@ -3,6 +3,7 @@ from selenium import webdriver
 from bs4 import BeautifulSoup
 import time
 import csv
+import pandas as pd
 
 browser= webdriver.Chrome("D:\SomeTimesUsedFolders\whjr\pythonprojects2\FLASK-PROS\chromedriver.exe")
 url="https://en.wikipedia.org/wiki/List_of_brightest_stars_and_other_record_stars"
@@ -15,7 +16,7 @@ time.sleep(10)
 def scrape():
     
     headerList=[
-        "Proper name","Distance","Mass","Radius"
+        "Proper name","Distance","Mass","Radius","Luminosity"
     ]
     starList=[]
     
@@ -23,22 +24,28 @@ def scrape():
         time.sleep(3)
         soup=BeautifulSoup(browser.page_source,"html.parser")
         tableRow=soup.find_all("tr")
-        print(tableRow)
-        # tableRow.pop(0)
-    
-        for i in tableRow:
-            tdTag=i.find_all("td")
-            temp=[]
-            for j in enumerate(tdTag):
-                try:
-                    temp.append(j.contents[0])
-                except:
-                    temp.append("")
-        starList.append(temp)
-                            
-    
-    with open("scraper.csv","w") as f:
-        csv_writer=csv.writer(f)
-        csv_writer.writerow(headerList)
-        csv_writer.writerows(starList)        
+        # print(tableRow)
+        tableRow.pop(0)
+        temp_list=[]
+        for tr in tableRow:
+            td=tr.find_all("td")
+            row = [i.text.rstrip() for i in td]
+            temp_list.append(row)
+        
+      
+        index=0
+        newlist=[]
+        for row in temp_list:
+            index=0
+            newlist=[]
+            for value in row:
+                
+                if(index==1 or index==3 or index==5 or index==6 or index==7):
+                    newlist.append(value)
+                index+=1
+            index=0
+            starList.append(newlist)
+        print(starList)
+   
+    df=pd.DataFrame(starList,columns=headerList)        
 scrape()        
